@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.projeto_padrao.R;
 import com.projeto_padrao.activities.eventos.EventosActivity;
+import com.projeto_padrao.models.Aplicacao;
 import com.projeto_padrao.models.Usuario;
 import com.projeto_padrao.models.eventos.Evento;
 import com.projeto_padrao.models.eventos.Favorito;
@@ -22,10 +23,12 @@ import java.util.List;
 
 public class EventosAdapter extends BaseAdapter {
 
+
     Favorito favorito;
     Context context;
     List<Evento> eventos;
     private LayoutInflater mInflater;
+
 
     public EventosAdapter(Context context, List<Evento> eventos) {
         this.eventos = eventos;
@@ -55,8 +58,6 @@ public class EventosAdapter extends BaseAdapter {
         Usuario usuarioLogado = Usuario.verificaUsuarioLogado();
 
 
-
-
         final EventosAdapter.ListContent holder;
         View v = convertView;
         if (v == null) {
@@ -74,9 +75,6 @@ public class EventosAdapter extends BaseAdapter {
             holder.eventos_lista_textview_preco = (TextView) v.findViewById(R.id.eventos_lista_textview_preco);
 
 
-
-
-
             holder.eventos_item_favorito.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -87,14 +85,10 @@ public class EventosAdapter extends BaseAdapter {
                     favorito.setUsuario(usuarioLogado.getId());
 
 
-
                     Usuario usuario = Usuario.verificaUsuarioLogado();
 
 
                     favorito.adicionarFavorito(usuario.getKey(), context);
-
-
-
 
                 }
             });
@@ -112,6 +106,25 @@ public class EventosAdapter extends BaseAdapter {
         } else {
             holder = (EventosAdapter.ListContent) v.getTag();
         }
+
+
+        List<Favorito> favoritosSalvos = Favorito.find(Favorito.class, "evento = ?", evento.getId().toString());
+        if(favoritosSalvos.size() == 0){
+
+            holder.eventos_item_favorito.setVisibility(View.VISIBLE);
+
+
+
+        }else{
+
+            holder.eventos_item_favorito.setVisibility(View.GONE);
+
+
+        }
+
+
+
+
 
         holder.eventos_lista_textview_nome.setText(evento.getNomeEvento());
         holder.eventos_lista_textview_hora.setText((("Horário: " + evento.getHorario())));

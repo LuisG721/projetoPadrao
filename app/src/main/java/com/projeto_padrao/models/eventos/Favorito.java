@@ -40,6 +40,10 @@ public class Favorito extends SugarRecord {
         this.context = context;
     }
 
+    public static void find(Class<Favorito> favoritoClass, Long id, Long id1) {
+    }
+
+
     public Context getContext() {
         return context;
     }
@@ -82,9 +86,8 @@ public class Favorito extends SugarRecord {
             });
     }
 
-
    /* public void deletarUsuario() {
-        Call<Usuario> call = new RetrofitConfig().setUserService().deletarUsuario("Token "+this.getKey(),this.getId());
+        Call<Favorito> call = new RetrofitConfig().setEventoService().deletarFavorito("Token "+this.getKey,this.getId());
         call.enqueue(new Callback<Usuario>() {
 
             @Override
@@ -111,7 +114,18 @@ public class Favorito extends SugarRecord {
             }
         });
 
-    }*/
+    }
+            @Override
+            public void onFailure(@NonNull Call<Usuario> call, @NonNull Throwable t) {
+                Log.e("retrofit", "Erro ao enviar o usuario:" + t.getMessage());
+
+            }
+        });
+
+    }
+
+*/
+
 
 
     public void receberListaDeFavoritos(Usuario usuario, ListView favoritos_lista_listview) {
@@ -123,19 +137,14 @@ public class Favorito extends SugarRecord {
                     List<Favorito> favoritos = response.body();
                     Log.d("listarFavoritos", "listar");
 
+                    Favorito.deleteAll((Favorito.class));
+
                     if (favoritos != null) {
                         for(Favorito favorito1 : favoritos){
                             favorito1.save();
                         }
                     }
 
-                  /*   List<Evento> eventos = new ArrayList<Evento>();
-
-                   for (Favorito favorito1 : favoritos){
-
-
-                        favorito1.getId(evento);
-                    };*/
 
                     FavoritosAdapter adaptador = new FavoritosAdapter(usuario.getContext(), favoritos);
                     favoritos_lista_listview.setAdapter(adaptador);

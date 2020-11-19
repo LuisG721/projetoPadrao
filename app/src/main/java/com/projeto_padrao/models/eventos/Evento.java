@@ -7,22 +7,18 @@ import android.widget.ListView;
 
 
 import com.orm.SugarRecord;
-import com.orm.dsl.Ignore;
 import com.projeto_padrao.adapters.EventosAdapter;
 
 import com.projeto_padrao.api.retrofit.RetrofitConfig;
-import com.projeto_padrao.models.Tarefa;
 import com.projeto_padrao.models.Usuario;
 
 
 import org.jetbrains.annotations.NotNull;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -43,6 +39,7 @@ public class Evento extends SugarRecord {
     public Evento(Context context) {
         this.context = context;
     }
+
 
 
     public void receberListaDeEventos(Usuario usuario, ListView evento_lista_listview) {

@@ -16,6 +16,7 @@ import com.projeto_padrao.models.Aplicacao;
 import com.projeto_padrao.models.Tarefa;
 import com.projeto_padrao.models.Usuario;
 import com.projeto_padrao.models.eventos.Evento;
+import com.projeto_padrao.models.eventos.Favorito;
 
 public class EventosActivity extends AppCompatActivity {
 
@@ -87,8 +88,11 @@ public class EventosActivity extends AppCompatActivity {
         if (usuario != null) {
             usuario.setContext(EventosActivity.this);
 
+            Favorito favorito = new Favorito(EventosActivity.this);
+            favorito.receberListaDeFavoritos(usuario,evento_lista_listview);
             Evento evento = new Evento(EventosActivity.this);
             evento.receberListaDeEventos(usuario,evento_lista_listview);
+
         }
 
 
