@@ -7,6 +7,7 @@ import android.widget.ListView;
 
 
 import com.orm.SugarRecord;
+import com.projeto_padrao.activities.eventos.EventosActivity;
 import com.projeto_padrao.adapters.EventosAdapter;
 
 import com.projeto_padrao.api.retrofit.RetrofitConfig;
@@ -42,6 +43,8 @@ public class Evento extends SugarRecord {
 
 
 
+
+
     public void receberListaDeEventos(Usuario usuario, ListView evento_lista_listview) {
         Call<List<Evento>> call = new RetrofitConfig().setEventoService().listarEventos("Token " + usuario.getKey());
         call.enqueue(new Callback<List<Evento>>() {
@@ -55,6 +58,8 @@ public class Evento extends SugarRecord {
                         for(Evento evento1 : eventos){
                             evento1.save();
                         }
+
+
                     }
 
                     EventosAdapter adaptador = new EventosAdapter(usuario.getContext(), eventos);

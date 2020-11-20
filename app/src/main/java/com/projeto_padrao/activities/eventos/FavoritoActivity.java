@@ -39,7 +39,7 @@ public class FavoritoActivity extends AppCompatActivity {
         if (usuario != null) {
             usuario.setContext(FavoritoActivity.this);
             Favorito favorito = new Favorito(FavoritoActivity.this);
-            favorito.receberListaDeFavoritos(usuario,favorito_lista_listview);
+            favorito.listarEventosFavoritados(favorito_lista_listview);
         }
     }
 }

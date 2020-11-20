@@ -3,6 +3,7 @@ package com.projeto_padrao.adapters;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.icu.text.DateFormat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -88,7 +89,33 @@ public class EventosAdapter extends BaseAdapter {
                     Usuario usuario = Usuario.verificaUsuarioLogado();
 
 
-                    favorito.adicionarFavorito(usuario.getKey(), context);
+                    favorito.deletarFavorito(usuario.getKey(), evento.getId());
+
+
+
+
+
+
+                    List<Favorito> favoritosSalvos = Favorito.find(Favorito.class, "evento = ?", evento.getId().toString());
+
+
+                    Log.d("teste" , "teste");
+
+                  /*  if(favoritosSalvos.size() == 0){
+
+
+
+
+                        holder.eventos_item_favorito.setVisibility(View.GONE);
+
+
+                    }else{
+
+                        holder.eventos_item_favorito.setVisibility(View.VISIBLE);
+
+                    }*/
+
+
 
                 }
             });
@@ -108,7 +135,7 @@ public class EventosAdapter extends BaseAdapter {
         }
 
 
-        List<Favorito> favoritosSalvos = Favorito.find(Favorito.class, "evento = ?", evento.getId().toString());
+    /*    List<Favorito> favoritosSalvos = Favorito.find(Favorito.class, "evento = ?", evento.getId().toString());
         if(favoritosSalvos.size() == 0){
 
             holder.eventos_item_favorito.setVisibility(View.VISIBLE);
@@ -120,7 +147,7 @@ public class EventosAdapter extends BaseAdapter {
             holder.eventos_item_favorito.setVisibility(View.GONE);
 
 
-        }
+        }*/
 
 
 

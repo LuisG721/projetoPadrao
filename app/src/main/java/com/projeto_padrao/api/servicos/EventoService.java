@@ -24,7 +24,7 @@ public interface EventoService {
     Call<Favorito> adicionarFavoritos(@Header("Authorization") String key,@Body Favorito favorito);
 
     @DELETE("favoritos/{id}")
-    Call<Usuario> deletarFavorito(@Header("Authorization") String key, @Path("id") Long id);
+    Call<Favorito> deletarFavorito(@Header("Authorization") String key, @Path("id") Long id);
 
     @GET("favoritos/")
     Call<List<Favorito>> listarFavoritos(@Header("Authorization") String key);

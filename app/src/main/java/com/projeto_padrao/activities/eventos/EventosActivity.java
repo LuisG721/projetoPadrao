@@ -35,6 +35,7 @@ public class EventosActivity extends AppCompatActivity {
         }
 
         idenfificandoComponentes();
+
         inicializandoComponentes();
 
     }
@@ -88,10 +89,11 @@ public class EventosActivity extends AppCompatActivity {
         if (usuario != null) {
             usuario.setContext(EventosActivity.this);
 
+
             Favorito favorito = new Favorito(EventosActivity.this);
             favorito.receberListaDeFavoritos(usuario,evento_lista_listview);
-            Evento evento = new Evento(EventosActivity.this);
-            evento.receberListaDeEventos(usuario,evento_lista_listview);
+
+
 
         }
 
@@ -99,7 +101,13 @@ public class EventosActivity extends AppCompatActivity {
 
     }
 
+public void carregandoListaDeFavoritos(){
 
+
+    Favorito favorito = new Favorito(EventosActivity.this);
+    favorito.receberListaDeFavoritos(usuario,evento_lista_listview);
+
+}
 
     @Override
     public void onBackPressed() {
