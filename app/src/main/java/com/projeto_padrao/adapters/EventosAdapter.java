@@ -3,7 +3,6 @@ package com.projeto_padrao.adapters;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.icu.text.DateFormat;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -74,6 +73,7 @@ public class EventosAdapter extends BaseAdapter {
             holder.eventos_lista_textview_hora = (TextView) v.findViewById(R.id.eventos_lista_textview_hora);
             holder.eventos_lista_textview_local = (TextView) v.findViewById(R.id.eventos_lista_textview_local);
             holder.eventos_lista_textview_preco = (TextView) v.findViewById(R.id.eventos_lista_textview_preco);
+            holder.eventos_item_favoritado = (ImageView) v.findViewById(R.id.eventos_item_favoritado);
 
 
             holder.eventos_item_favorito.setOnClickListener(new View.OnClickListener() {
@@ -89,7 +89,7 @@ public class EventosAdapter extends BaseAdapter {
                     Usuario usuario = Usuario.verificaUsuarioLogado();
 
 
-                    favorito.deletarFavorito(usuario.getKey(), evento.getId());
+                    favorito.adicionarFavorito(usuario.getKey(), context);
 
 
 
@@ -98,10 +98,7 @@ public class EventosAdapter extends BaseAdapter {
 
                     List<Favorito> favoritosSalvos = Favorito.find(Favorito.class, "evento = ?", evento.getId().toString());
 
-
-                    Log.d("teste" , "teste");
-
-                  /*  if(favoritosSalvos.size() == 0){
+                   if(favoritosSalvos.size() == 0){
 
 
 
@@ -111,22 +108,22 @@ public class EventosAdapter extends BaseAdapter {
 
                     }else{
 
-                        holder.eventos_item_favorito.setVisibility(View.VISIBLE);
+                        holder.eventos_item_favoritado.setVisibility(View.VISIBLE);
 
-                    }*/
+                    }
 
 
 
                 }
             });
 
-            holder.eventos_item_view.setOnClickListener(new View.OnClickListener() {
+           /* holder.eventos_item_view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
 
                     //Aplicacao.irParaTarefaDetalheActivity(tarefa.getContext(),tarefa.getId());
                 }
-            });
+            });*/
 
 
             v.setTag(holder);
@@ -172,6 +169,7 @@ public class EventosAdapter extends BaseAdapter {
         TextView eventos_lista_textview_hora;
         TextView eventos_lista_textview_local;
         TextView eventos_lista_textview_preco;
+        ImageView eventos_item_favoritado;
 
 
     }

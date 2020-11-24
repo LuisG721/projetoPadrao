@@ -23,7 +23,6 @@
             android:theme="@style/TemaApp">
 
 
-
         </activity>
         <activity
             android:name=".activities.eventos.EventosActivity"

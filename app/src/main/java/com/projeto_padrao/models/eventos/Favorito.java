@@ -108,12 +108,12 @@ public class Favorito extends SugarRecord {
             @Override
             public void onResponse(@NonNull Call<Favorito> call, @NonNull Response<Favorito> response) {
                 if (response.isSuccessful()) {
-                 //   confirmarFavoritoDeletado();
+                    confirmarFavoritoDeletado();
 
 
             }else{
 
-                   // confirmarFavoritoNaoDeletado();
+                    confirmarFavoritoNaoDeletado();
 
                 }
 
@@ -151,11 +151,9 @@ public class Favorito extends SugarRecord {
                         }
                     }
 
-                    Evento evento = new Evento();
-                    evento.receberListaDeEventos(usuario,favoritos_lista_listview);
 
-
-
+                    FavoritosAdapter adaptador = new FavoritosAdapter(usuario.getContext(), favoritos);
+                    favoritos_lista_listview.setAdapter(adaptador);
                 }
 
             }
@@ -166,12 +164,6 @@ public class Favorito extends SugarRecord {
             }
 
         });
-    }
-
-    public void listarEventosFavoritados(ListView favorito_lista_listview){
-
-
-
     }
 
     public void atualizarFavoritos(Usuario usuario) {

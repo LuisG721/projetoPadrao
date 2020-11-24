@@ -59,6 +59,21 @@ public class FavoritosAdapter extends BaseAdapter {
             holder.favoritos_lista_textview_hora = (TextView) v.findViewById(R.id.favoritos_lista_textview_hora);
             holder.favoritos_lista_textview_local = (TextView) v.findViewById(R.id.favoritos_lista_textview_local);
             holder.favoritos_lista_textview_preco = (TextView) v.findViewById(R.id.favoritos_lista_textview_preco);
+            holder.favoritos_item_favoritado = (ImageView) v.findViewById(R.id.favoritos_item_favoritado);
+
+            holder.favoritos_item_favoritado.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    holder.favoritos_item_favorito.setVisibility(View.VISIBLE);
+                    holder.favoritos_item_favoritado.setVisibility(View.GONE);
+
+                    if (usuarioLogado != null) {
+                        favorito.deletarFavorito(usuarioLogado.getKey(), favorito.getEvento());
+                    }
+                }
+            });
+
+
             v.setTag(holder);
         } else {
             holder = (FavoritosAdapter.ListContent) v.getTag();
@@ -83,5 +98,6 @@ public class FavoritosAdapter extends BaseAdapter {
         TextView favoritos_lista_textview_hora;
         TextView favoritos_lista_textview_local;
         TextView favoritos_lista_textview_preco;
+        ImageView favoritos_item_favoritado;
     }
 }

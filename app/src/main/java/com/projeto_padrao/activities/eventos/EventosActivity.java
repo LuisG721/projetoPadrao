@@ -90,8 +90,8 @@ public class EventosActivity extends AppCompatActivity {
             usuario.setContext(EventosActivity.this);
 
 
-            Favorito favorito = new Favorito(EventosActivity.this);
-            favorito.receberListaDeFavoritos(usuario,evento_lista_listview);
+            Evento evento = new Evento(EventosActivity.this);
+            evento.receberListaDeEventos(usuario,evento_lista_listview);
 
 
 
