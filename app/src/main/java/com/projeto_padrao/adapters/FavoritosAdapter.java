@@ -68,7 +68,7 @@ public class FavoritosAdapter extends BaseAdapter {
                     holder.favoritos_item_favoritado.setVisibility(View.GONE);
 
                     if (usuarioLogado != null) {
-                        favorito.deletarFavorito(usuarioLogado.getKey(), favorito.getEvento());
+                        favorito.deletarFavorito(usuarioLogado.getKey()/*, favorito.getEvento()*/);
                     }
                 }
             });
