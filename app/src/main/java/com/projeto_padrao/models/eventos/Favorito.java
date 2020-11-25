@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import com.orm.SugarRecord;
 import com.projeto_padrao.activities.autenticacao.RegisterActivity;
 import com.projeto_padrao.activities.eventos.EventosActivity;
+import com.projeto_padrao.activities.tarefa.ListarTarefasActivity;
 import com.projeto_padrao.activities.usuario.ListarUsuariosActivity;
 import com.projeto_padrao.activities.usuario.UsuarioDetalheActivity;
 import com.projeto_padrao.adapters.EventosAdapter;
@@ -94,45 +95,13 @@ public class Favorito extends SugarRecord {
     }
 
     public void deletarFavoritoBanco(){
+
         this.delete();
     }
 
     private void confirmarFavoritoDeletado() {
         Toast.makeText(this.context, "Favorito Deletado", Toast.LENGTH_SHORT).show();
     }
-
-    public void deletarFavorito(String key , long evento) {
-        Call<Favorito> call = new RetrofitConfig().setEventoService().deletarFavorito("Token "+key,  evento);
-        call.enqueue(new Callback<Favorito>() {
-
-            @Override
-            public void onResponse(@NonNull Call<Favorito> call, @NonNull Response<Favorito> response) {
-                if (response.isSuccessful()) {
-                    confirmarFavoritoDeletado();
-
-
-            }else{
-
-                    confirmarFavoritoNaoDeletado();
-
-                }
-
-
-        }
-
-            @Override
-            public void onFailure(Call<Favorito> call, Throwable t) {
-                Log.e("retrofit", "Erro ao enviar o Favorito:" + t.getMessage());
-
-
-            }
-            });
-
-   }
-
-
-
-
 
     public void receberListaDeFavoritos(Usuario usuario, ListView favoritos_lista_listview) {
         Call<List<Favorito>> call = new RetrofitConfig().setEventoService().listarFavoritos("Token " + usuario.getKey());
@@ -165,6 +134,40 @@ public class Favorito extends SugarRecord {
 
         });
     }
+
+    public void deletarFavorito(String key) {
+        Call<Favorito> call = new RetrofitConfig().setEventoService().deletarFavorito("Token "+key, this.getId());
+        call.enqueue(new Callback<Favorito>() {
+
+            @Override
+            public void onResponse(@NonNull Call<Favorito> call, @NonNull Response<Favorito> response) {
+                if (response.isSuccessful()) {
+                    if (response.body() != null) {
+
+                        deletarFavoritoBanco();
+
+                        confirmarFavoritoDeletado();
+                    }
+                }else{
+
+                    confirmarFavoritoNaoDeletado();
+
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(Call<Favorito> call, Throwable t) {
+                Log.e("retrofit", "Erro ao enviar o Favorito:" + t.getMessage());
+
+
+            }
+        });
+
+    }
+
+
 
     public void atualizarFavoritos(Usuario usuario) {
         Call<List<Favorito>> call = new RetrofitConfig().setEventoService().listarFavoritos("Token " + usuario.getKey());
