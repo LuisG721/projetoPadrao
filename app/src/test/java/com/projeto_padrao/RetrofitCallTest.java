@@ -1,8 +1,11 @@
 package com.projeto_padrao;
 
+import android.media.session.MediaSession;
+
 import com.projeto_padrao.api.retrofit.RetrofitConfig;
 import com.projeto_padrao.models.Usuario;
 import com.projeto_padrao.models.eventos.Evento;
+import com.projeto_padrao.models.eventos.Favorito;
 
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -13,6 +16,8 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Response;
+import retrofit2.http.Header;
+import retrofit2.http.Path;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.fail;
@@ -20,7 +25,8 @@ import static org.junit.Assert.fail;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class RetrofitCallTest {
 
-    private static Usuario usuarioTeste = new Usuario("binksnosakebrook2@gmail.com", "123456");
+    private static Usuario usuarioTeste = new Usuario("pedroh.mix@gmail.com", "123456");
+    private static Favorito favoritoTeste = new Favorito();
 
     @Test
     public void A_testeRegistro() {
@@ -146,4 +152,44 @@ public class RetrofitCallTest {
 
     }
 
-}
+    @Test
+    public void F_listarFavoritosTest() {
+
+        B_login_Success();
+
+
+        Call<List<Favorito>> call = new RetrofitConfig().setEventoService().listarFavoritos("Token " + usuarioTeste.getKey());
+
+        try {
+            //Magic is here at .execute() instead of .enqueue()
+            Response<List<Favorito>> response = call.execute();
+            List<Favorito> favoritos = response.body();
+
+            if (response.isSuccessful()) {
+                assertNotNull(favoritos);
+            } else {
+                fail();
+            }
+
+
+        } catch (IOException e) {
+            fail();
+            e.printStackTrace();
+        }
+
+    }
+
+    @Test
+    public void G_deletarFavoritoTest() {
+        B_login_Success();
+        Call<List<Favorito>> call = new RetrofitConfig().setEventoService().deletarFavorito("Token " + favoritoTeste.getId());
+        try{
+
+        }
+
+
+    }
+    }
+
+
+

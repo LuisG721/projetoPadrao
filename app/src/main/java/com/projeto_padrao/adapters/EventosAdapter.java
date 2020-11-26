@@ -108,8 +108,8 @@ public class EventosAdapter extends BaseAdapter {
         holder.eventos_lista_textview_nome.setText(evento.getNomeEvento());
         holder.eventos_lista_textview_hora.setText((("Horário: " + evento.getHorario())));
         holder.eventos_lista_textview_data.setText(("Data: " + evento.getData()));
-        holder.eventos_lista_textview_local.setText(evento.getLocal());
-        holder.eventos_lista_textview_preco.setText("Preço: " + String.valueOf(evento.getPreco()));
+        holder.eventos_lista_textview_local.setText("Local: " + evento.getLocal());
+        holder.eventos_lista_textview_preco.setText("Preço: R$" + String.valueOf(evento.getPreco()));
         return v;
     }
 

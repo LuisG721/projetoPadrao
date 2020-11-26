@@ -84,8 +84,8 @@ public class FavoritosAdapter extends BaseAdapter {
          holder.favoritos_lista_textview_nome.setText(eventoFavorito.getNomeEvento());
          holder.favoritos_lista_textview_hora.setText((("Horário: " + eventoFavorito.getHorario())));
          holder.favoritos_lista_textview_data.setText(("Data: " + eventoFavorito.getData()));
-         holder.favoritos_lista_textview_local.setText(eventoFavorito.getLocal());
-         holder.favoritos_lista_textview_preco.setText("Preço: " + String.valueOf(eventoFavorito.getPreco()));
+         holder.favoritos_lista_textview_local.setText("Local: " + eventoFavorito.getLocal());
+         holder.favoritos_lista_textview_preco.setText("Preço: R$" + String.valueOf(eventoFavorito.getPreco()));
         return v;
     }
     public static class ListContent {
