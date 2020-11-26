@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import com.orm.SugarRecord;
 import com.projeto_padrao.activities.autenticacao.RegisterActivity;
 import com.projeto_padrao.activities.eventos.EventosActivity;
+import com.projeto_padrao.activities.eventos.FavoritoActivity;
 import com.projeto_padrao.activities.tarefa.ListarTarefasActivity;
 import com.projeto_padrao.activities.usuario.ListarUsuariosActivity;
 import com.projeto_padrao.activities.usuario.UsuarioDetalheActivity;
@@ -142,13 +143,12 @@ public class Favorito extends SugarRecord {
             @Override
             public void onResponse(@NonNull Call<Favorito> call, @NonNull Response<Favorito> response) {
                 if (response.isSuccessful()) {
-                    if (response.body() != null) {
 
-                        deletarFavoritoBanco();
+                    confirmarFavoritoDeletado();
+                    ((FavoritoActivity)context).inicializandoComponentes();
 
-                        confirmarFavoritoDeletado();
-                    }
-                }else{
+
+               }else{
 
                     confirmarFavoritoNaoDeletado();
 

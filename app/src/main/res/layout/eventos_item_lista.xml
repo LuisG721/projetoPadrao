@@ -10,26 +10,14 @@
         android:layout_height="170dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        android:background="@drawable/round_button_card_green"
+        android:background="@drawable/round_card_blue"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/eventos_item_favorito"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="@+id/eventos_item_view"
-        app:layout_constraintEnd_toEndOf="@+id/eventos_item_view"
-        app:layout_constraintTop_toTopOf="@+id/eventos_item_view"
-        app:layout_constraintVertical_bias="0.505"
-        app:srcCompat="@drawable/ic_baseline_stars_24" />
 
     <ImageView
         android:id="@+id/eventos_item_favoritado"
@@ -43,6 +31,19 @@
         app:layout_constraintTop_toTopOf="@+id/eventos_item_view"
         app:layout_constraintVertical_bias="0.505"
         app:srcCompat="@drawable/ic_baseline_stars_amarela" />
+
+    <ImageView
+        android:id="@+id/eventos_item_favorito"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/eventos_item_view"
+        app:layout_constraintEnd_toEndOf="@+id/eventos_item_view"
+        app:layout_constraintTop_toTopOf="@+id/eventos_item_view"
+        app:layout_constraintVertical_bias="0.505"
+        app:srcCompat="@drawable/ic_baseline_stars_24" />
 
     <TextView
         android:id="@+id/eventos_lista_textview_nome"

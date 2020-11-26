@@ -1,7 +1,6 @@
 package com.projeto_padrao.adapters;
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.icu.text.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,11 +9,9 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.projeto_padrao.R;
-import com.projeto_padrao.activities.eventos.EventosActivity;
 import com.projeto_padrao.models.Usuario;
 import com.projeto_padrao.models.eventos.Evento;
 import com.projeto_padrao.models.eventos.Favorito;
-import java.sql.Date;
 import java.util.List;
 public class FavoritosAdapter extends BaseAdapter {
     Favorito favorito;

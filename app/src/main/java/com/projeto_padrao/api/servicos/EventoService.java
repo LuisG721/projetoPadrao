@@ -23,7 +23,7 @@ public interface EventoService {
     @POST("favoritos/")
     Call<Favorito> adicionarFavoritos(@Header("Authorization") String key,@Body Favorito favorito);
 
-    @DELETE("favoritos/{id}")
+    @DELETE("favoritos/{id}/")
     Call<Favorito> deletarFavorito(@Header("Authorization") String key, @Path("id") Long id);
 
     @GET("favoritos/")
