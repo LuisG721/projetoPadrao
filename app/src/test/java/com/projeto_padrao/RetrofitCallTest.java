@@ -178,18 +178,8 @@ public class RetrofitCallTest {
         }
 
     }
-
-    @Test
-    public void G_deletarFavoritoTest() {
-        B_login_Success();
-        Call<List<Favorito>> call = new RetrofitConfig().setEventoService().deletarFavorito("Token " + favoritoTeste.getId());
-        try{
-
-        }
-
-
     }
-    }
+
 
 
 
